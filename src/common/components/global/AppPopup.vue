@@ -14,7 +14,8 @@
                         <div
                             v-if="showContent"
                             @click.self="resolve(false)"
-                            class="tw-z-[50999] tw-w-full md:tw-min-w-[300px] !tw-overflow-auto !tw-max-h-screen"
+                            :style="{'z-index': index}"
+                            class="tw-w-full md:tw-min-w-[300px] !tw-overflow-auto !tw-max-h-screen"
                         >
                             <slot></slot>
                             
@@ -53,13 +54,25 @@ export default {
         closeable: {
             required: false,
             default: true
+        },
+        zIndex: {
+            required: false,
+            default: 0
         }
     },
     data() {
         return {
-            showContent: false
+            showContent: false,
+            defaultIndex: 50999
         };
     },
+
+    computed: {
+        index() {
+            return this.zIndex + this.defaultIndex
+        }
+    },
+
     watch: {
         visible(value) {
             if(!value) {
@@ -79,7 +92,6 @@ export default {
             }
         },
     },
-    computed: {},
 
     mounted() {
         this.showContent = this.visible;

@@ -8,27 +8,16 @@
                 <icon icon="mdi:close" class="tw-text-xl" />
             </button>
 
-            <div class="tw-w-full tw-overflow-hidden tw-h-full">
-                <div class="tw-grid tw-grid-cols-3 md:tw-grid-cols-4 lg:tw-grid-cols-5 tw-gap-5">
-                    <div v-for="mi in item.menu_items" :key="mi.id" >
-                        <button class="tw-p-5 tw-w-full tw-rounded-lg tw-aspect-square tw-shadow-sm tw-bg-green-300 tw-font-bold tw-text-xl">
-                            <span>{{ mi.name }}</span>
-                        </button>
-                        <div class="tw-px-3 tw-w-full tw-flex tw-justify-between tw-flex-wrap tw-mt-1">
-                            <span>{{ mi.name }}</span>
-                            <span class="tw-font-bold tw-ml-auto">{{ mi.price }} MAD</span>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
+            <menu-list-swiper :items="item.menu_items" :item="item" />
         </div>
     </popup>
   </div>
 </template>
 
 <script>
+import MenuListSwiper from './MenuListSwiper.vue'
 export default {
+  components: { MenuListSwiper },
     props: {
         visible: {
             required: true,
