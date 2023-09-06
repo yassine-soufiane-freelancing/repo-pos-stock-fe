@@ -7,18 +7,20 @@
 <script>
 import AppLayout from '@/layouts/app/AppLayout.vue';
 import VendorLayout from '@/layouts/vendor/VendorLayout.vue';
+import DashboardLayout from '@/layouts/dashboard/DashboardLayout.vue';
 
 export default {
     name: 'IndexLayout',
     
     components: {
         'app': AppLayout,
-        'vendor': VendorLayout
+        'vendor': VendorLayout,
+        'dashboard': DashboardLayout,
     },
 
     data: () => ({
         defaultLayout: 'app',
-        layouts: ['app', 'vendor']
+        layouts: ['app', 'vendor', 'dashboard']
     }),
 
     computed: {

@@ -5,6 +5,9 @@ import vendorLayout from '@/layouts/vendor/store'
 
 // Modules
 import auth from '@/modules/auth/login/store'
+import alert from './modules/alert'
+import dashboard from '@/layouts/dashboard/store'
+import ticket from '@/modules/tickets/vendor/store'
 
 
 export default createStore({
@@ -19,5 +22,8 @@ export default createStore({
   modules: {
     'vendor-layout': vendorLayout,
     'auth': auth,
+    'alert': alert,
+    'dashboard': dashboard,
+    'ticket': ticket
   }
 })

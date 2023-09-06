@@ -5,7 +5,7 @@ class Login {
 
     async login(user) {
         await Csrf.getCookie();
-        return Api.post('api/auth/login', user);
+        return Api.post('/login', user);
     }
 
 }

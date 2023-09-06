@@ -1,6 +1,9 @@
 const initialState = {
     drawer: true,
-    rail: true
+    rail: true,
+
+    sidebar: 'index-options',
+    available_options: ['index-options', 'index-ticket']
 }
 
 export default {
@@ -11,7 +14,9 @@ export default {
 
     getters: {
         drawer: state => state.drawer,
-        rail: state => state.rail
+        rail: state => state.rail,
+
+        sidebar: state => state.sidebar
     },
 
     mutations: {
@@ -21,6 +26,10 @@ export default {
 
         SET_RAIL: (state, payload) => {
             state.rail = payload
+        },
+
+        SET_SIDEBAR: (state, payload) => {
+            state.sidebar = state.available_options.includes(payload) ? payload : 'index-options'
         }
     },
     
@@ -31,6 +40,10 @@ export default {
 
         setRail: ({commit}, payload) => {
             commit('SET_RAIL', payload)
+        },
+
+        'set-sidebar': ({commit}, payload) => {
+            commit('SET_SIDEBAR', payload)
         }
     }
 }

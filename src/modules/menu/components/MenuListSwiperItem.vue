@@ -7,16 +7,16 @@
             <span>{{ menuItem.name }}</span>
             <span class="tw-font-bold tw-ml-auto">{{ menuItem.price }} MAD</span>
         </div>
-        <MenuListItemQuantity v-model:visible="visible" :item="item" :menu-item="menuItem" />
+        <MenuListItemAdd @cancel="$emit('cancel')" v-model:visible="visible" :item="item" :menu-item="menuItem" />
     </div>
 </template>
 
 <script>
-import MenuListItemQuantity from './MenuListItemQuantity.vue';
+import MenuListItemAdd from './MenuListItemAdd.vue';
 
 export default {
     components: {
-        MenuListItemQuantity,
+        MenuListItemAdd,
     },
 
     props: {

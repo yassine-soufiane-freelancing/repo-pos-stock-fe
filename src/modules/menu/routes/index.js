@@ -1,9 +1,10 @@
+import IndexMenus from '../pages/IndexMenus.vue'
 
 export default [
     {
-        name: 'vendor/menu',
+        name: 'vendor.menu',
         path: '/vendor/menu',
-        component: () => import('../pages/IndexMenus.vue'),
+        component: IndexMenus,
         meta: {
             layout: 'vendor'
         }
