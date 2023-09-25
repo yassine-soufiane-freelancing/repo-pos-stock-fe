@@ -1,12 +1,15 @@
 <template>
-  <div class="tw-grid tw-grid-cols-2 tw-border-b tw-divide-x tw-text-sm">
-            <div class="tw-col-span-1 tw-flex tw-flex-col tw-gap-1 tw-p-2">
+  <div class="tw-grid tw-grid-cols-1 tw-border-b tw-divide-x tw-text-sm">
+            <!-- <div class="tw-col-span-1 tw-flex tw-flex-col tw-gap-1 tw-p-2">
                 <span>Serveur</span>
                 <span>...</span>
-            </div>
-            <button @click="client_popup = true" class="tw-col-span-1 tw-flex tw-flex-col tw-gap-1 tw-p-2 hover:tw-bg-gray-50 tw-cursor-pointer tw-duration-200">
-                <span>Client</span>
-                <span class="tw-text-start">{{ client.full_name }}</span>
+            </div> -->
+            <button @click="client_popup = true" class="tw-col-span-1 tw-flex tw-items-center tw-justify-between tw-p-2 hover:tw-bg-gray-50 tw-cursor-pointer tw-duration-200">
+                <span class="tw-flex tw-items-center tw-gap-1">
+                    <span>Client: </span>
+                    <span class="tw-text-start tw-font-medium tw-text-primary-500 tw-capitalize">{{ client.full_name }}</span>
+                </span>
+                <icon icon="basil:edit-outline" class="tw-text-green-500 tw-text-2xl" />
             </button>
 
             <popup :visible="client_popup" @cancel="client_popup = false">

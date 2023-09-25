@@ -1,12 +1,7 @@
 <template>
   <tr
     class="hover:tw-bg-gray-50"
-    :class="[
-      item.reported_diff != null &&
-        item.confirmation == 'reporter' &&
-        item.reported_diff <= 0 &&
-        ' !tw-shadow-sm !tw-border !tw-border-emerald-300',
-    ]"
+    :class="[]"
   >
     <td class="tw-p-2 tw-text-sm tw-font-medium tw-whitespace-nowrap">
       <div class="tw-max-w-[25px]">
@@ -45,7 +40,7 @@
         </div>
       </div>
     </td>
-    <td class="tw-px-4 tw-py-2 tw-text-sm tw-font-medium tw-whitespace-nowrap">
+    <td class="tw-px-4 tw-py-2 tw-w-5 tw-text-sm tw-font-medium tw-whitespace-nowrap">
       <div>
         <h2 class="tw-font-medium tw-text-gray-800 darkx:tw-text-white">
           {{ item.id }}
@@ -53,34 +48,47 @@
       </div>
     </td>
 
-    <td class="tw-px-4 tw-py-2 tw-text-sm tw-font-medium tw-whitespace-nowrap">
+    <td class="tw-px-4 tw-py-2 tw-w-10 tw-text-sm tw-font-medium tw-whitespace-nowrap">
       <div>
-        <img class="tw-w-10 tw-h-10 tw-rounded" :src="$backend(item.image_url)">
-      </div>
-    </td>
-    <td class="tw-px-2 tw-py-2 tw-text-sm tw-font-medium tw-whitespace-nowrap">
-      <div>
-        {{ item.menu_name }}
-      </div>
-    </td>
-    <td class="tw-px-2 tw-py-2 tw-text-sm tw-whitespace-nowrap">
-      <div>
-        {{ item.slug }}
+        {{ item.amount }} {{ currency }}
       </div>
     </td>
 
-    <td class="tw-px-4 tw-py-2 tw-text-sm tw-font-medium tw-whitespace-nowrap">
+    <td class="tw-px-4 tw-w-10 tw-py-2 tw-text-sm tw-font-medium tw-whitespace-nowrap">
+      <div class="tw-w-fit">
+        <span v-if="item.mouvement_type == 'plus'" class="tw-p-2 tw-block tw-w-fit tw-bg-green-100 tw-text-green-600 tw-rounded-lg">
+          <icon class="tw-text-xl" icon="ic:round-plus" />
+        </span>
+        <span v-if="item.mouvement_type == 'minus'" class="tw-p-2 tw-block tw-w-fit tw-bg-rose-100 tw-text-rose-600 tw-rounded-lg">
+          <icon class="tw-text-xl" icon="ic:round-minus" />
+        </span>
+      </div>
+    </td>
+
+    <td class="tw-px-2 tw-py-2 tw-w-48   tw-text-sm tw-font-medium tw-whitespace-nowrap">
+      <div class="tw-max-w-48 tw-truncate">
+        {{ item.mouvement_description }}
+      </div>
+    </td>
+    <td class="tw-px-2 tw-py-2 tw-text-sm tw-whitespace-nowrap">
+      <div v-if="true">
+        <CashMovementImage :item="item" />
+      </div>
+    </td>
+
+    <td class="tw-px-4 tw-py-2 tw-w-5 tw-text-sm tw-font-medium tw-whitespace-nowrap">
       <div>
         <h2
-          class="tw-font-medium tw-text-gray-800 darkx:tw-text-white tw-flex tw-items-center tw-gap-2"
+          class="tw-font-medium tw-text-gray-800 darkx:tw-text-white tw-flex tw-flex-col"
         >
           <!-- {{ getDate(item.created_at) }} -->
-          <p>{{ moment(item.created_at).format("DD[/]MM[/]YY") }}</p>
+          <p>{{ moment(item.created_at).format('MMMM Do YYYY') }}</p>
+          <p>{{ moment(item.created_at).format('h:mm:ss a') }}</p>
         </h2>
       </div>
     </td>
 
-    <td class="tw-px-4 tw-py-2 tw-text-sm tw-whitespace-nowrap">
+    <td v-if="false" class="tw-px-4 tw-py-2 tw-w-5 tw-text-sm tw-whitespace-nowrap">
       <div>
         <TableActions
           @update="(newItem) => $emit('update', newItem)"
@@ -89,14 +97,17 @@
       </div>
     </td>
   </tr>
+
 </template>
 
 <script>
 import moment from "moment";
 import TableActions from './TableActions.vue';
+import CashMovementImage from '../CashMovementImage.vue';
+import { currency } from '@/config/app';
 
 export default {
-  components: { TableActions },
+  components: { TableActions, CashMovementImage },
 
   props: {
     item: {
@@ -113,6 +124,7 @@ export default {
   data() {
     return {
       moment: moment,
+      currency: currency,
     };
   },
 

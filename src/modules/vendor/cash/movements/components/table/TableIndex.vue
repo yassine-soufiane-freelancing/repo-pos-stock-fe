@@ -6,7 +6,7 @@
             <div class="tw-inline-block tw-min-w-full tw-align-middle">
                 <div class="tw-border tw-overflow-auto tw-border-gray-200 darkx:tw-border-gray-700 md:tw-rounded-lg">
                     <table class="tw-min-w-full tw-divide-y tw-divide-gray-200 darkx:tw-divide-gray-700">
-                        <thead class="tw-bg-gray-50 darkx:tw-bg-gray-800">
+                        <thead class="tw-bg-gray-50 darkx:tw-bg-gray-800 tw-whitespace-nowrap">
                             <tr>
                                 <th scope="col" class="tw-w-10 rtl:tw-text-right tw-px-2 tw-text-sm tw-font-medium tw-whitespace-nowrap tw-text-gray-500 darkx:tw-text-gray-400">
                                   <div class="tw-max-w-[25px]">
@@ -45,29 +45,33 @@
                                     </div>
                                   </div>
                                 </th>
-                                <th scope="col" class="tw-py-3.5 tw-px-4 tw-w-7 tw-text-sm tw-font-normal tw-text-left rtl:tw-text-right tw-text-gray-500 darkx:tw-text-gray-400">
+                                <th scope="col" class="tw-py-3.5 tw-px-4 tw-w-5 tw-text-sm tw-font-normal tw-text-left rtl:tw-text-right tw-text-gray-500 darkx:tw-text-gray-400">
                                     <span>ID</span>
                                 </th>
                                 
                                 <th scope="col" class="tw-px-3 tw-w-12 tw-py-3.5 tw-text-sm tw-font-normal tw-text-left rtl:tw-text-right tw-text-gray-500 darkx:tw-text-gray-400">
-                                    Image
+                                    Montant
                                 </th>
                                 <th scope="col" class="tw-px-3 tw-py-3.5 tw-text-sm tw-font-normal tw-text-left rtl:tw-text-right tw-text-gray-500 darkx:tw-text-gray-400">
-                                    Nom
+                                    Type
                                 </th>
                                 <th scope="col" class="tw-px-3 tw-w-10 tw-py-3.5 tw-text-sm tw-font-normal tw-text-left rtl:tw-text-right tw-text-gray-500 darkx:tw-text-gray-400">
-                                    Slug
+                                    Description
+                                </th>
+
+                                <th scope="col" class="tw-px-3 tw-w-10 tw-py-3.5 tw-text-sm tw-font-normal tw-text-left rtl:tw-text-right tw-text-gray-500 darkx:tw-text-gray-400">
+                                    Image
                                 </th>
 
                                 <th scope="col" class="tw-py-3.5 tw-px-4 tw-w-10 tw-text-sm tw-font-normal tw-text-left rtl:tw-text-right tw-text-gray-500 darkx:tw-text-gray-400">
                                     <button  class="tw-flex tw-items-center tw-gap-x-3 focus:tw-outline-none">
-                                        <span>Created</span>
+                                        <span>Effectué le</span>
                                     </button>
                                 </th>
 
-                                <th scope="col" class="tw-relative tw-font-normal tw-text-left tw-text-sm tw-py-3.5 tw-px-4">
+                                <!-- <th scope="col" class="tw-relative tw-w-4 tw-font-normal tw-text-left tw-text-sm tw-py-3.5 tw-px-4">
                                     <span>Actions</span>
-                                </th>
+                                </th> -->
                             </tr>
                         </thead>
 

@@ -6,7 +6,7 @@
             <div class="tw-inline-block tw-min-w-full tw-align-middle">
                 <div class="tw-border tw-overflow-auto tw-border-gray-200 darkx:tw-border-gray-700 md:tw-rounded-lg">
                     <table class="tw-min-w-full tw-divide-y tw-divide-gray-200 darkx:tw-divide-gray-700">
-                        <thead class="tw-bg-gray-50 darkx:tw-bg-gray-800">
+                        <thead class="tw-bg-gray-50 darkx:tw-bg-gray-800 tw-whitespace-nowrap">
                             <tr>
                                 <th scope="col" class="tw-w-10 rtl:tw-text-right tw-px-2 tw-text-sm tw-font-medium tw-whitespace-nowrap tw-text-gray-500 darkx:tw-text-gray-400">
                                   <div class="tw-max-w-[25px]">

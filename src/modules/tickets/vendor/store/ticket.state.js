@@ -1,7 +1,8 @@
 export default {
     'currentTicket': {
         items: [],
-        mode: 1
+        mode: 1,
+        table_id: null
     },
 
     'currentClient': {

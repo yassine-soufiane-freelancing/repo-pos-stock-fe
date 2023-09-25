@@ -11,7 +11,7 @@
           </h2>
           <form action="#">
             <div class="tw-grid tw-gap-4 sm:tw-grid-cols-2 sm:tw-gap-6">
-              <div class="sm:tw-col-span-2">
+              <div class="tw-col-span-2">
                 <label
                   for="amount"
                   class="tw-block tw-mb-2 tw-text-sm tw-font-medium tw-text-gray-900 dark:tw-text-white"
@@ -20,29 +20,43 @@
                 <input
                   type="number"
                   v-model="amount"
+                  min="0"
                   id="amount"
                   class="tw-bg-gray-50 tw-border tw-border-solid focus:tw-outline-none tw-border-gray-300 tw-text-gray-900 tw-text-sm tw-rounded-lg focus:tw-ring-primary-600 focus:tw-border-primary-600 tw-block tw-w-full tw-p-2.5 dark:tw-bg-gray-700 dark:tw-border-gray-600 dark:tw-placeholder-gray-400 dark:tw-text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                   placeholder="Tapez le montant"
                   required=""
                 />
-              </div>
-
-              <div class="tw-w-full">
                 <label
-                  for="by"
-                  class="tw-block tw-mb-2 tw-text-sm tw-font-medium tw-text-gray-900 dark:tw-text-white"
-                  >Par</label
+                  v-if="errors.amount"
+                  class="tw-block tw-mb-2 tw-mt-1 tw-text-xs tw-font-medium tw-text-red-400 dark:tw-text-white"
+                  >{{ errors.amount }}</label
                 >
-                <input
-                  type="text"
-                  v-model="by"
-                  id="by"
-                  class="tw-bg-gray-50 tw-border tw-border-solid focus:tw-outline-none tw-border-gray-300 tw-text-gray-900 tw-text-sm tw-rounded-lg focus:tw-ring-primary-600 focus:tw-border-primary-600 tw-block tw-w-full tw-p-2.5 dark:tw-bg-gray-700 dark:tw-border-gray-600 dark:tw-placeholder-gray-400 dark:tw-text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                  placeholder="Tapez qui fait cette mouvement"
-                />
               </div>
 
-              <div class="tw-w-full">
+              <div class="tw-w-full md:tw-col-span-1 tw-col-span-2">
+                <label
+                  class="tw-block tw-mb-2 tw-text-sm tw-font-medium tw-text-gray-900 dark:tw-text-white"
+                  >Type</label
+                >
+                <div class="tw-grid tw-grid-cols-2 tw-gap-5">
+                  <button
+                    @click="type = 'minus'"
+                    type="button"
+                    :class="[type == 'minus' && 'tw-bg-primary-500 !tw-text-white']"
+                    class="tw-h-[40px] tw-rounded-lg tw-bg-gray-100 tw-duration-200 hover:tw-shadow tw-flex tw-items-center tw-justify-center">
+                    <icon icon="ic:round-minus" class="tw-text-xl" />
+                  </button>
+                  <button 
+                    @click="type = 'plus'"
+                    type="button"
+                    :class="[type == 'plus' && 'tw-bg-primary-500 tw-text-white']"
+                    class="tw-h-[40px] tw-rounded-lg tw-bg-gray-100 tw-duration-200 hover:tw-shadow tw-flex tw-items-center tw-justify-center">
+                    <icon icon="ic:round-plus" class="tw-text-xl" />
+                  </button>
+                </div>
+              </div>
+
+              <div class="tw-w-full md:tw-col-span-1 tw-col-span-2">
                 <label
                   for="description"
                   class="tw-block tw-mb-2 tw-text-sm tw-font-medium tw-text-gray-900 dark:tw-text-white"
@@ -57,6 +71,11 @@
                   required=""
                   rows="1"
                 ></textarea>
+                <label
+                  v-if="errors.description"
+                  class="tw-block tw-mb-2 tw-mt-1 tw-text-xs tw-font-medium tw-text-red-400 dark:tw-text-white"
+                  >{{ errors.description }}</label
+                >
               </div>
               <div>
                 <label
@@ -85,7 +104,7 @@
 
             </div>
 
-            <div class="tw-flex tw-items-center tw-justify-end tw-w-full">
+            <div class="tw-flex tw-items-center tw-justify-end tw-w-full tw-mt-5">
                 <a-button @click="create" :loading="isLoading">
                     <span>Ajouter</span>
                 </a-button>
@@ -101,6 +120,7 @@
 </template>
 
 <script>
+import create from '@/modules/vendor/cash/movements/services/create';
 export default {
 
     data() {
@@ -109,8 +129,10 @@ export default {
 
             amount: 0,
             description: '',
-            by: '',
-            image: null
+            type: 'minus',
+            image: null,
+
+            errors: {}
         }
     },
 
@@ -133,21 +155,22 @@ export default {
         },
 
         create() {
-            this.isLoading = true;
+            // this.isLoading = true;
+            create(this);
 
-            setTimeout(() => {
-                this.$alert({
-                    type: 'success',
-                    body: 'Mouvement a été ajouté avec success !'
-                })
+            // setTimeout(() => {
+            //     this.$alert({
+            //         type: 'success',
+            //         body: 'Mouvement a été ajouté avec success !'
+            //     })
 
-                this.amount = 0;
-                this.by = 0;
-                this.description = '';
-                this.image = null
+            //     this.amount = 0;
+            //     this.type = 'minus';
+            //     this.description = '';
+            //     this.image = null
 
-                this.isLoading = false;
-            }, 2000)
+            //     this.isLoading = false;
+            // }, 2000)
         }
     }
 

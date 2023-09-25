@@ -1,5 +1,5 @@
 <template>
-  <button type="button" :class="classes" v-bind="$attrs" class="tw-relative tw-h-[40px] tw-inline-flex tw-items-center tw-ml-auto tw-px-5 tw-py-2.5 tw-mt-4 sm:tw-mt-6 tw-text-sm tw-font-medium tw-text-center tw-rounded-lg">
+  <button type="button" :class="classes" v-bind="$attrs" class="tw-relative tw-h-[40px] tw-inline-flex tw-items-center tw-px-5 tw-py-2.5  tw-text-sm tw-font-medium tw-text-center tw-rounded-lg">
     <div :class="[loading && '!tw-opacity-0']">
         <slot />
     </div>

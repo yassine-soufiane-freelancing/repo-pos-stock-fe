@@ -13,6 +13,11 @@ class Menu {
         return Api.get('api/menus' + url, options);
     }
 
+    async all() {
+        await Csrf.getCookie();
+        return Api.get('api/menus/all');
+    }
+
 }
 
 export default new Menu();

@@ -4,7 +4,7 @@
 
 <script>
 import { defineComponent } from 'vue';
-
+import CashRegister from '@/api/vendor/CashRegister';
 // Components
 
 export default defineComponent({
@@ -17,13 +17,14 @@ export default defineComponent({
   },
 
   created() {
-    // this.$router.push({name: 'vendor/menu'})
+    this.$router.push({name: 'vendor.menu'})
     // switch (this.user.role) {
     //   case 'admin':
     //     break;
     //   default:
     //     break;
     // }
+    CashRegister.all();
   }
 });
 </script>

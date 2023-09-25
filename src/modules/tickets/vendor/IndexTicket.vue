@@ -2,8 +2,12 @@
   <div class="tw-h-full">
     <div class="tw-flex tw-flex-col tw-max-h-full tw-relative">
         <ticket-top-options />
-        <ticket-modes />
+        <ticket-modes v-if="false" />
         <ticket-client />
+
+        <div v-if="ticket.mode == 1">
+          <ticket-table />
+        </div>
 
         <div class="tw-h-full tw-pb-16">
             <div class="tw-h-fit tw-overflow-hidden">
@@ -27,10 +31,11 @@ import TicketClient from './components/TicketClient.vue'
 import TicketItems from './components/TicketItems.vue'
 import TicketModes from './components/TicketModes.vue'
 import TicketPrice from './components/TicketPrice.vue'
+import TicketTable from './components/TicketTable.vue'
 import TicketTopOptions from './components/TicketTopOptions.vue'
 
 export default {
-  components: { TicketTopOptions, TicketModes, TicketClient, TicketPrice, TicketBottomOptions, TicketItems },
+  components: { TicketTopOptions, TicketModes, TicketClient, TicketPrice, TicketBottomOptions, TicketItems, TicketTable },
 
   computed: {
     ticket() {

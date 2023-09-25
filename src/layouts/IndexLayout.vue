@@ -8,6 +8,7 @@
 import AppLayout from '@/layouts/app/AppLayout.vue';
 import VendorLayout from '@/layouts/vendor/VendorLayout.vue';
 import DashboardLayout from '@/layouts/dashboard/DashboardLayout.vue';
+import KitchenLayout from './kitchen/KitchenLayout.vue';
 
 export default {
     name: 'IndexLayout',
@@ -16,11 +17,12 @@ export default {
         'app': AppLayout,
         'vendor': VendorLayout,
         'dashboard': DashboardLayout,
+        'kitchen': KitchenLayout,
     },
 
     data: () => ({
         defaultLayout: 'app',
-        layouts: ['app', 'vendor', 'dashboard']
+        layouts: ['app', 'vendor', 'dashboard', 'kitchen']
     }),
 
     computed: {

@@ -8,6 +8,7 @@ import auth from '@/modules/auth/login/store'
 import alert from './modules/alert'
 import dashboard from '@/layouts/dashboard/store'
 import ticket from '@/modules/tickets/vendor/store'
+import kitchen from '@/modules/kitchen/store'
 
 
 export default createStore({
@@ -24,6 +25,7 @@ export default createStore({
     'auth': auth,
     'alert': alert,
     'dashboard': dashboard,
-    'ticket': ticket
+    'ticket': ticket,
+    'kitchen': kitchen
   }
 })

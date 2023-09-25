@@ -4,7 +4,11 @@ import vendor from './routes/vendor'
 import loginRoutes from '@/modules/auth/login/routes'
 import registerRoutes from '@/modules/auth/register/routes'
 import menuRoutes from '@/modules/menu/routes/index.js'
+
 import vendorCashMovementsRoutes from '@/modules/vendor/cash/movements/routes'
+import vendorCashRegisterRoutes from '@/modules/vendor/cash/register/routes'
+
+import kitchenRoutes from '@/modules/kitchen/routes'
 
 import adminMenuRoutes from '@/modules/admin/menu/routes'
 import adminMenuItemsRoutes from '@/modules/admin/menuItems/routes'
@@ -42,6 +46,10 @@ const routes = [
 
   // Vendor Routes
   ...vendorCashMovementsRoutes,
+  ...vendorCashRegisterRoutes,
+
+  // Kitchen
+  ...kitchenRoutes,
 
   // Global routes
   ...loginRoutes,

@@ -23,7 +23,7 @@
             </div>
 
             <div v-show="!rail" class="tw-h-full">
-                <component :is="sidebar" @change-to="handleChangeTo" />
+                <component :key="sidebar" :is="sidebar" @change-to="handleChangeTo" />
             </div>
 
         </div>

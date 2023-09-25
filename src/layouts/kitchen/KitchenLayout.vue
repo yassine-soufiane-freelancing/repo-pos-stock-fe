@@ -1,67 +1,37 @@
 <template>
   <div>
-    <v-layout :full-height="true" class="rounded rounded-md">
+    <v-layout :full-height="true" class="tw-bg-gray-700 tw-flex tw-flex-col">
 
-      <v-navigation-drawer
-            v-model="drawer"
-            location="left"
-            :absolute="false"
-            class="!tw-top-0 !tw-fixed"
-            :rail="rail"
-            :permanent="true"
-            :touchless="true"
-            width="350"
-      >
-
-      </v-navigation-drawer>
-
-
+      <kitchen-navigation />
+      
       <v-main
         class="tw-min-h-screen "
       >
+        <div class="tw-flex tw-justify-between tw-p-5 tw-pb-0">
+          <kitchen-stats />
+          <user-menu />
+        </div>
         <router-view />
       </v-main>
     </v-layout>
   </div>
 </template>
 <script>
+import KitchenNavigation from './partials/KitchenNavigation.vue';
+import KitchenStats from './partials/KitchenStats.vue';
+import UserMenu from './partials/UserMenu.vue';
 
 export default {
-    components: {  },
+    components: { KitchenNavigation, KitchenStats, UserMenu },
 
     data() {
-        return {
-            mode: 1,
-            component: 'index-options',
-
-            components: ['index-options', 'index-ticket'], 
-
-        }
+        return {}
     },
 
     computed: {
-        drawer: {
-            get() {
-                return this.$store.getters['vendor-layout/drawer']
-            },
-            set(v) {
-                this.$store.dispatch('vendor-layout/setDrawer', v)
-            }
-        },
-
-        rail: {
-            get() {
-                return this.$store.getters['vendor-layout/rail']
-            },
-            set(v) {
-                this.$store.dispatch('vendor-layout/setRail', v)
-            }
-        },
-
     },
 
     methods: {
-
     },
 
 };
