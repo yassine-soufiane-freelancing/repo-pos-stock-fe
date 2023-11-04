@@ -36,6 +36,9 @@
         <router-view />
       </v-main>
     </v-layout>
+
+    <cash-register />
+
   </div>
 </template>
 <script>
@@ -43,9 +46,10 @@ import IndexTicket from '@/modules/tickets/vendor/IndexTicket.vue';
 import IndexOptions from './partials/sidebar/options/IndexOptions.vue';
 import SidebarAccount from './partials/sidebar/SidebarAccount.vue';
 import SidebarCaseStatus from './partials/sidebar/SidebarCaseStatus.vue';
+import CashRegister from './partials/CashRegister.vue';
 
 export default {
-    components: { IndexTicket, IndexOptions, SidebarAccount, SidebarCaseStatus },
+    components: { IndexTicket, IndexOptions, SidebarAccount, SidebarCaseStatus, CashRegister },
 
     data() {
         return {

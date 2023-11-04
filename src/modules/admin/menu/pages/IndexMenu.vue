@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="tw-w-full tw-p-5 tw-bg-white tw-shadow-sm tw-rounded-lg">
+    <div class="tw-w-full tw-p-5 tw-bg-white tw-shadow-sm">
 
       <h2
             class="tw-mb-4 tw-text-xl tw-font-bold tw-text-gray-900 dark:tw-text-white"
@@ -68,10 +68,8 @@ export default {
         .then(({ data }) => {
           const options = data.result;
           this.setOptions(options);
-        })
-        .then(() => {
           this.isLoading = false;
-        });
+        }, this.$handleApiError)
     },
 
     handlePageChange(page) {

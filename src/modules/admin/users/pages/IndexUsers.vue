@@ -3,9 +3,9 @@
     <div class="tw-w-full tw-p-5 tw-bg-white tw-shadow-sm">
 
       <h2
-            class="tw-mb-4 tw-text-xl tw-font-bold tw-text-gray-900 dark:tw-text-white"
+            class="tw-border-b tw-pb-2 tw-mb-4 tw-text-xl tw-font-bold tw-text-gray-700 dark:tw-text-white"
           >
-        Liste des Menus
+        Liste des utilisateurs
       </h2>
 
     <div>
@@ -38,7 +38,7 @@ export default {
 
   data() {
     return {
-      isLoading: true,
+      isLoading: false,
       items: [],
       selected: [],
 
@@ -69,7 +69,7 @@ export default {
           const options = data.result;
           this.setOptions(options);
           this.isLoading = false;
-        }, this.$handleApiError);
+        }, this.$handleApiError)
     },
 
     handlePageChange(page) {
@@ -93,7 +93,7 @@ export default {
   },
 
   mounted() {
-    this.paginate()
+    // this.paginate()
   }
 }
 </script>

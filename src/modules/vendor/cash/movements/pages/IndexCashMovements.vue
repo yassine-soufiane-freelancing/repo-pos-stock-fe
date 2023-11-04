@@ -78,10 +78,8 @@ export default {
             .then(({ data }) => {
             const options = data.result;
             this.setOptions(options);
-            })
-            .then(() => {
             this.isLoading = false;
-            });
+            }, this.$handleApiError)
         },
 
         handlePageChange(page) {

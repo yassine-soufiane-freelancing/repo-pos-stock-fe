@@ -13,11 +13,14 @@ import kitchenRoutes from '@/modules/kitchen/routes'
 import adminMenuRoutes from '@/modules/admin/menu/routes'
 import adminMenuItemsRoutes from '@/modules/admin/menuItems/routes'
 import adminTablesRoutes from '@/modules/admin/tables/routes'
-import adminStaffRoutes from '@/modules/admin/staff/routes'
+import adminUsersRoutes from '@/modules/admin/users/routes'
 import adminCashRoutes from '@/modules/admin/cash/routes'
+import adminStatisticsRoutes from '@/modules/admin/statistics/routes'
+import adminSettingsRoutes from '@/modules/admin/settings/routes'
+
 
 import IndexView from '../views/IndexView.vue'
-import AboutView from '../views/AboutView.vue'
+// import AboutView from '../views/AboutView.vue'
 
 const routes = [
   {
@@ -25,24 +28,18 @@ const routes = [
     name: 'index',
     component: IndexView
   },
-  {
-    path: '/dashboard',
-    name: 'dashboard/index',
-    component: AboutView,
-    meta: {
-      layout: 'dashboard'
-    }
-  },
-
+  
   // custom routes
   ...vendor,
-
+  
   // Admin Routes
   ...adminMenuRoutes,
   ...adminMenuItemsRoutes,
   ...adminTablesRoutes,
-  ...adminStaffRoutes,
+  ...adminUsersRoutes,
   ...adminCashRoutes,
+  ...adminStatisticsRoutes,
+  ...adminSettingsRoutes,
 
   // Vendor Routes
   ...vendorCashMovementsRoutes,

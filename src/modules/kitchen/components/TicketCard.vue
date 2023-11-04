@@ -8,7 +8,7 @@
             <div class="tw-flex tw-items-center tw-gap-2">
                 <!-- <h1 class="tw-text-xl tw-font-bold tw-text-gray-100"><span class="tw-text-sm">#</span> {{ ticket.id }}</h1> -->
                 <div class=" tw-bg-gray-300 tw-text-gray-600 tw-p-1 tw-rounded">
-                    <icon icon="grommet-icons:cafeteria" class="tw-text-lg" />
+                    <icon :icon="ticket.id == 1 ?'grommet-icons:cafeteria' : 'ri:takeaway-fill'" class="tw-text-lg" />
                 </div>
                 <h1 class="tw-text-xl tw-font-bold tw-text-gray-100">10:25</h1>
             </div>

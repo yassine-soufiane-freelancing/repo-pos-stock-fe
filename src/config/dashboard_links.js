@@ -3,7 +3,7 @@ export default [
         id: 1,
         name: 'Dashboard',
         icon: 'carbon:dashboard',
-        to: 'dashboard/index',
+        to: 'dashboard.index',
         hasChildren: false
     },
     {
@@ -35,16 +35,22 @@ export default [
     },
     {
         id: 4,
-        name: 'Staff',
+        name: 'Utilisateurs',
         icon: 'fluent:people-team-16-filled',
         hasChildren: true,
-        module: 'staff',
+        module: 'users',
         children: [
             {
                 id: 1,
-                name: 'Liste Staff',
-                to: 'admin.staff.index',
-                module: 'staff'
+                name: 'Ajouter un Utilisateur',
+                to: 'admin.users.create',
+                module: 'users'
+            },
+            {
+                id: 2,
+                name: 'Liste Utilisateurs',
+                to: 'admin.users.index',
+                module: 'users'
             }
         ]
     },
@@ -75,6 +81,34 @@ export default [
                 name: 'Liste tables',
                 to: 'admin.tables.index',
                 module: 'tables'
+            }
+        ]
+    },
+
+    {
+        id: 7,
+        name: 'Paramètres',
+        icon: 'uil:setting',
+        hasChildren: true,
+        module: 'settings',
+        children: [
+            {
+                id: 1,
+                name: 'Général',
+                to: 'admin.settings.general',
+                module: 'settings'
+            },
+            {
+                id: 2,
+                name: 'Propriétaire',
+                to: 'admin.settings.owner',
+                module: 'settings'
+            },
+            {
+                id: 3,
+                name: 'Taxes',
+                to: 'admin.settings.tax',
+                module: 'settings'
             }
         ]
     },

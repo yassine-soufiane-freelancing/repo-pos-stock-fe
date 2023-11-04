@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="tw-w-full tw-p-5 tw-bg-white tw-shadow-sm tw-rounded-lg">
+    <div class="tw-w-full tw-p-5 tw-bg-white tw-shadow-sm">
       <section>
         <div class="tw-mx-auto ">
           <h2
@@ -110,6 +110,8 @@ export default {
 
             name: '',
             image: null,
+            deliveryPrice: 0,
+            normalPrice: 0,
             errors: {}
         }
     },

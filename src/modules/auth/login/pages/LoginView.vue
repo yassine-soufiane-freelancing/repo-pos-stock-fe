@@ -45,6 +45,7 @@
                 >
                 <input
                   v-model="password"
+                  @keyup.enter="login"
                   @input="errors.password = null"
                   type="password"
                   :class="[errors.password && '!tw-border-red-400']"
