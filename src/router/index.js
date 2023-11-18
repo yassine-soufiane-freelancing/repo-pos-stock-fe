@@ -1,20 +1,59 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+import vendor from './routes/vendor'
+
+import loginRoutes from '@/modules/auth/login/routes'
+import registerRoutes from '@/modules/auth/register/routes'
+import menuRoutes from '@/modules/menu/routes/index.js'
+
+import vendorCashMovementsRoutes from '@/modules/vendor/cash/movements/routes'
+import vendorCashRegisterRoutes from '@/modules/vendor/cash/register/routes'
+
+import kitchenRoutes from '@/modules/kitchen/routes'
+
+import adminMenuRoutes from '@/modules/admin/menu/routes'
+import adminMenuItemsRoutes from '@/modules/admin/menuItems/routes'
+import adminTablesRoutes from '@/modules/admin/tables/routes'
+import adminUsersRoutes from '@/modules/admin/users/routes'
+import adminCashRoutes from '@/modules/admin/cash/routes'
+import adminStatisticsRoutes from '@/modules/admin/statistics/routes'
+import adminSettingsRoutes from '@/modules/admin/settings/routes'
+
+
+import IndexView from '../views/IndexView.vue'
+// import AboutView from '../views/AboutView.vue'
 
 const routes = [
   {
     path: '/',
-    name: 'home',
-    component: HomeView
+    name: 'index',
+    component: IndexView
   },
-  {
-    path: '/about',
-    name: 'about',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
-  }
+  
+  // custom routes
+  ...vendor,
+  
+  // Admin Routes
+  ...adminMenuRoutes,
+  ...adminMenuItemsRoutes,
+  ...adminTablesRoutes,
+  ...adminUsersRoutes,
+  ...adminCashRoutes,
+  ...adminStatisticsRoutes,
+  ...adminSettingsRoutes,
+
+  // Vendor Routes
+  ...vendorCashMovementsRoutes,
+  ...vendorCashRegisterRoutes,
+
+  // Kitchen
+  ...kitchenRoutes,
+
+  // Global routes
+  ...loginRoutes,
+  ...registerRoutes,
+  ...menuRoutes,
+
+  
 ]
 
 const router = createRouter({
