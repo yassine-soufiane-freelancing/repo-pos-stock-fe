@@ -30,6 +30,16 @@ jobs:
         env:
           VUE_APP_API_URL: https://api.your-domain.com
 
+      - name: Verify Build Output
+        run: |
+          if [ ! -d "dist" ]; then
+            echo "ERROR: dist directory not found after build"
+            ls -la
+            exit 1
+          fi
+          echo "Build successful. Contents of dist:"
+          ls -la dist/
+
       - name: Deploy to dist Branch
         run: |
           git config user.name "github-actions[bot]"
@@ -42,11 +52,11 @@ jobs:
           # Clear existing files (except .git)
           find . -mindepth 1 -not -path './.git' -not -path './.git/*' -exec rm -rf {} + 2>/dev/null || true
           
-          # Copy built files
-          cp -r dist/* .
+          # Copy built files from the main branch's dist directory
+          git show main:dist -r | tar -xf - 2>/dev/null || (git checkout main -- dist && cp -r dist/* . && rm -rf dist)
           cp .htaccess . 2>/dev/null || echo "No .htaccess file"
           
           # Commit and push
           git add -A
-          git commit -m "Build production files - $(date +'%Y-%m-%d %H:%M:%S')" || echo "No changes to commit"
+          git commit -m "Build production files - 2026-03-31 12:12:49" || echo "No changes to commit"
           git push -u origin dist
