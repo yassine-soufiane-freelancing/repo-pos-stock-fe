@@ -1,0 +1,52 @@
+name: Build and Deploy Vue.js to dist Branch
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Build Project
+        run: npm run build
+        env:
+          VUE_APP_API_URL: https://api.your-domain.com
+
+      - name: Deploy to dist Branch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          
+          # Fetch or create dist branch
+          git fetch origin dist --depth=1 2>/dev/null || echo "dist branch does not exist yet"
+          git checkout -B dist origin/dist 2>/dev/null || git checkout --orphan dist
+          
+          # Clear existing files (except .git)
+          find . -mindepth 1 -not -path './.git' -not -path './.git/*' -exec rm -rf {} + 2>/dev/null || true
+          
+          # Copy built files
+          cp -r dist/* .
+          cp .htaccess . 2>/dev/null || echo "No .htaccess file"
+          
+          # Commit and push
+          git add -A
+          git commit -m "Build production files - $(date +'%Y-%m-%d %H:%M:%S')" || echo "No changes to commit"
+          git push -u origin dist
